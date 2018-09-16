@@ -1,14 +1,15 @@
-#!/bin/bash -x 
+#!/bin/bash
 nn=${1:-9}
 num=$(seq 10 99 | shuf| head -1)
 num2=$(seq 1 $nn | shuf | head -1)
+temp_file=${temp_file:=/dev/null} # 単独実施時は/tmpを使用しない
+
+# Main
 echo "$num x $num2 =?"
 read INPUT
 ANSWER=$(( $num * $num2 ))
-echo $ANSWER
-#if (( $INPUT == $num * $num2 )) ; then
-if (( $INPUT == $ANSWER )) ; then
-   echo SEIKAI
+if (( ${INPUT:-0} == $ANSWER )) ; then
+   echo SEIKAI | tee -a $temp_file
 else
    echo X $ANSWER
 fi

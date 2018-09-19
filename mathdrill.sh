@@ -23,4 +23,5 @@ end_time=$(date +%s)
 total_time=$(( $end_time - $start_time ))
 echo "TotalTime:$total_time sec"
 
+# Exit
 trap "rm -f $temp_file" 0

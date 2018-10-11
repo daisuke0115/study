@@ -6,8 +6,8 @@ conf=/root/etc/copy.conf
 
 # 区切り文字をカンマにして引数で指定されたパラメータを配列に格納
 # アスタリスクで展開されないように修正すること
-list=($(awk 'BEGIN { FS = "," } \
-     $1 == "'"${argument}"'" {print $2,$3}' ${conf}))
+list=($(awk  -F ","  \
+     '$1 == "'"${argument}"'" {print $2,$3}' ${conf}))
 
 echo ${list[@]}
 echo ${list[0]}

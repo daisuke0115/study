@@ -26,7 +26,7 @@ if [[ `echo "${list}" | grep \*` && ! -d ${list2} ]]; then
 fi
 
 # コピー元ファイルが存在し、コピー先ディレクトリがある場合にコピーを実施 
-for i in $(echo ${list:-null}); do
+for i in $(echo ${list}); do
   if [[ -r ${i} && -d ${list2%/*} ]]; then
     cp ${i} ${list2}
     RC=$?
